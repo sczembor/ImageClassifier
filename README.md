@@ -1,4 +1,4 @@
-# fisher-discriminant-analysis
+# Image Classifier
 University: Charles III University of Madrid  
 Course: Statistical Learning  
 Author: Stanisław Czembor  
