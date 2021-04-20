@@ -164,7 +164,7 @@ my_knn <- function(img, training_data, k, threshold)
   return(results)
   
 }
-KNN <- function(img, training_data, k, threshold , metric)
+KNN <- function(img, training_data, k = 4, threshold = 1000 , metric = "euclidan")
 {
   
   neighbours <- matrix(Inf, nrow = nrow(training_data), ncol = 1)
@@ -197,6 +197,7 @@ KNN <- function(img, training_data, k, threshold , metric)
   neighbours_sorted = neighbours[order(neighbours[,1],decreasing = F),]
   k_nn = neighbours_sorted[1:k,2]
   img_label = names(which.max(table(k_nn)))
+  print(neighbours_sorted[1,1])
   if(neighbours_sorted[1,1] > threshold) img_label = 0#threshold
   
   return(img_label)

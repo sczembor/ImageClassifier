@@ -197,7 +197,7 @@ par(mfrow=c(1,1))
   test_data_projected = test_data_projected %*% fda_eigenvectors[,1:8]
   
   #threshold
-  denominator <- seq(2,3,0.025)
+  denominator <- seq(2,5,0.5)
   acc = c(rep(0,length(denominator)))
   thresshold_value = c(rep(0,length(denominator)))
   for(d in 1:length(denominator))#different denominators
@@ -217,6 +217,7 @@ par(mfrow=c(1,1))
     }
     acc[d] = acc[d] + hits
   }
+  acc = acc *6
 acc = acc / 6
 acc
 thresshold_acc = data.frame(
@@ -224,11 +225,10 @@ thresshold_acc = data.frame(
   'acc' = acc
 )
 
-c <- ggplot(data=thresshold_acc , aes(x=thresshold,y=acc))+geom_line()+geom_point()+scale_x_continuous(breaks = seq(0, length(denominator), by = 4))
+c <- ggplot(data=thresshold_acc , aes(x=thresshold,y=acc))+geom_line()+geom_point()+scale_x_continuous(breaks = seq(0, length(denominator), by = 1))
 c <- c + labs(title = "Accuracy for different thresshold values",
               subtitle = "Similarity metric: Euclidan Distance; K = 4")
 c
-thresshold_value[32]
 
 
 
